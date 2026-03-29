@@ -97,6 +97,7 @@
     "passwordPlaceholder": "Wpisz hasło...",
     "unlock": "Odblokuj",
     "wrongPassword": "Nieprawidłowe hasło",
+    "lockedMessage": "Odblokuj dostęp do predefiniowanych zasobów logo i packshot",
     "description": "Włączony dostęp do zasobów {{name}}. Użyj przycisku \"Wybierz\" w ustawieniach logo/packshot.",
     "disable": "Wyłącz dostęp",
     "selectResource": "Wybierz zasób {{name}}",

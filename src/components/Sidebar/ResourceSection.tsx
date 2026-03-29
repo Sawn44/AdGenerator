@@ -75,26 +75,31 @@ export const ResourceSection: FC<ResourceSectionProps> = ({
       </div>
 
       {!activeSource ? (
-        <form onSubmit={handlePasswordSubmit} className="space-y-2">
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder={t('resources.passwordPlaceholder')}
-            className={`w-full px-3 py-2 bg-gray-700 border rounded text-sm text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 ${
-              error ? 'border-red-500 focus:ring-red-500' : 'border-gray-600 focus:ring-blue-500'
-            }`}
-          />
-          <button
-            type="submit"
-            className="w-full px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded transition-colors"
-          >
-            {t('resources.unlock')}
-          </button>
-          {error && (
-            <p className="text-red-400 text-xs text-center">{t('resources.wrongPassword')}</p>
-          )}
-        </form>
+        <>
+          <p className="text-xs text-gray-400 text-center bg-gray-700/50 rounded p-3">
+            {t('resources.lockedMessage')}
+          </p>
+          <form onSubmit={handlePasswordSubmit} className="space-y-2">
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder={t('resources.passwordPlaceholder')}
+              className={`w-full px-3 py-2 bg-gray-700 border rounded text-sm text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 ${
+                error ? 'border-red-500 focus:ring-red-500' : 'border-gray-600 focus:ring-blue-500'
+              }`}
+            />
+            <button
+              type="submit"
+              className="w-full px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded transition-colors"
+            >
+              {t('resources.unlock')}
+            </button>
+            {error && (
+              <p className="text-red-400 text-xs text-center">{t('resources.wrongPassword')}</p>
+            )}
+          </form>
+        </>
       ) : (
         <div className="space-y-2">
           <p className="text-xs text-gray-400">

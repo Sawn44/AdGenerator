@@ -97,6 +97,7 @@
     "passwordPlaceholder": "Enter password...",
     "unlock": "Unlock",
     "wrongPassword": "Incorrect password",
+    "lockedMessage": "Unlock access to predefined logo and packshot resources",
     "description": "{{name}} resources access enabled. Use \"Choose\" button in logo/packshot settings.",
     "disable": "Disable access",
     "selectResource": "Select {{name}} resource",
