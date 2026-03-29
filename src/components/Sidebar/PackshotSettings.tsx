@@ -1,5 +1,5 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
+import type { FC } from 'react';
 import { CubeIcon } from '@heroicons/react/24/outline';
 import type { PackshotConfig } from '../../types/template';
 import { FileUploader } from '../common/FileUploader';
@@ -10,12 +10,16 @@ interface PackshotSettingsProps {
   config: PackshotConfig | null;
   onChange: (config: PackshotConfig | null) => void;
   onPackshotUpload: (data: string) => void;
+  isHusseMode?: boolean;
+  onOpenHusseModal?: () => void;
 }
 
-export const PackshotSettings: React.FC<PackshotSettingsProps> = ({
+export const PackshotSettings: FC<PackshotSettingsProps> = ({
   config,
   onChange,
   onPackshotUpload,
+  isHusseMode = false,
+  onOpenHusseModal,
 }) => {
   const { t } = useTranslation();
 
@@ -50,10 +54,20 @@ export const PackshotSettings: React.FC<PackshotSettingsProps> = ({
       
       {config?.enabled && (
         <div className="space-y-3 pl-4 border-l-2 border-gray-700">
-          <FileUploader
-            label={t('packshot.upload')}
-            onFileSelect={onPackshotUpload}
-          />
+          <div className="flex gap-2">
+            <FileUploader
+              label={t('packshot.upload')}
+              onFileSelect={onPackshotUpload}
+            />
+            {isHusseMode && onOpenHusseModal && (
+              <button
+                onClick={onOpenHusseModal}
+                className="flex-1 px-3 py-2 bg-blue-600 hover:bg-blue-500 rounded text-white text-sm transition-colors"
+              >
+                Wybierz
+              </button>
+            )}
+          </div>
           
           <Slider
             label={t('packshot.position') + ' X'}

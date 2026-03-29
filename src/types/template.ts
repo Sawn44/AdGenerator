@@ -8,6 +8,7 @@ export interface LogoConfig {
   positionY: number;
   scale: number;
   opacity: number;
+  logoUrl?: string;
 }
 
 export interface PackshotConfig {
@@ -16,6 +17,7 @@ export interface PackshotConfig {
   positionY: number;
   scale: number;
   opacity: number;
+  packshotUrl?: string;
 }
 
 export interface TextConfig {

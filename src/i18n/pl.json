@@ -89,6 +89,25 @@
     "deleted": "Projekt usunięty",
     "confirmDelete": "Czy na pewno chcesz usunąć ten projekt?"
   },
+  "husse": {
+    "title": "Zasoby Husse",
+    "active": "Aktywny",
+    "passwordPlaceholder": "Wpisz hasło...",
+    "unlock": "Odblokuj",
+    "wrongPassword": "Nieprawidłowe hasło",
+    "description": "Włączony dostęp do zasobów Husse. Użyj przycisku \"Wybierz\" w ustawieniach logo/packshot.",
+    "disable": "Wyłącz tryb Husse",
+    "selectResource": "Wybierz zasób Husse",
+    "noResources": "Brak zasobów",
+    "loading": "Ładowanie zasobów...",
+    "error": "Błąd ładowania zasobów"
+  },
+  "resources": {
+    "title": "Zasoby",
+    "select": "Wybierz",
+    "logo": "Logo",
+    "packshot": "Packshot"
+  },
   "export": {
     "success": "Eksport zakończony pomyślnie",
     "error": "Błąd eksportu"

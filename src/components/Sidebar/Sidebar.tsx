@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, type FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { Template, TemplateConfig, FormatType } from '../../types/template';
 import { FormatSelector } from './FormatSelector';
@@ -10,6 +10,8 @@ import { SubtextSettings } from './SubtextSettings';
 import { CTASettings } from './CTASettings';
 import { TemplateSelector } from './TemplateSelector';
 import { ProjectManager } from './ProjectManager';
+import { ResourceSection } from './ResourceSection';
+import { HusseResourceModal } from '../Modal/HusseResourceModal';
 
 interface SidebarProps {
   templates: Template[];
@@ -22,7 +24,7 @@ interface SidebarProps {
   onLoadProject: (project: any) => void;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({
+export const Sidebar: FC<SidebarProps> = ({
   templates,
   config,
   onConfigChange,
@@ -33,9 +35,28 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onLoadProject,
 }) => {
   const { t, i18n } = useTranslation();
+  const [isHusseMode, setIsHusseMode] = useState(false);
+  const [modalType, setModalType] = useState<'logo' | 'packshot' | null>(null);
 
   const handleChange = <K extends keyof TemplateConfig>(key: K, value: TemplateConfig[K]) => {
     onConfigChange({ ...config, [key]: value });
+  };
+
+  const openHusseModal = (type: 'logo' | 'packshot') => {
+    setModalType(type);
+  };
+
+  const closeHusseModal = () => {
+    setModalType(null);
+  };
+
+  const handleResourceSelect = (resource: { url: string }) => {
+    if (modalType === 'logo' && config.logo) {
+      handleChange('logo', { ...config.logo, logoUrl: resource.url });
+    } else if (modalType === 'packshot' && config.packshot) {
+      handleChange('packshot', { ...config.packshot, packshotUrl: resource.url });
+    }
+    closeHusseModal();
   };
 
   return (
@@ -53,6 +74,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
             {i18n.language === 'pl' ? 'EN' : 'PL'}
           </button>
         </div>
+
+        <ResourceSection
+          isHusseMode={isHusseMode}
+          onToggleHusseMode={setIsHusseMode}
+        />
 
         <div className="bg-gray-800 rounded-lg p-4 space-y-4">
           <TemplateSelector
@@ -80,6 +106,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
             config={config.logo}
             onChange={(logo) => handleChange('logo', logo)}
             onLogoUpload={onLogoUpload}
+            isHusseMode={isHusseMode}
+            onOpenHusseModal={() => openHusseModal('logo')}
           />
         </div>
 
@@ -88,6 +116,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
             config={config.packshot}
             onChange={(packshot) => handleChange('packshot', packshot)}
             onPackshotUpload={onPackshotUpload}
+            isHusseMode={isHusseMode}
+            onOpenHusseModal={() => openHusseModal('packshot')}
           />
         </div>
 
@@ -116,9 +146,19 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <ProjectManager
             onSave={onSaveProject}
             onLoad={onLoadProject}
+            config={config}
           />
         </div>
       </div>
+
+      {modalType && (
+        <HusseResourceModal
+          isOpen={true}
+          onClose={closeHusseModal}
+          onSelect={handleResourceSelect}
+          filter={modalType}
+        />
+      )}
     </div>
   );
 };

@@ -16,36 +16,6 @@ export const TemplateSelector: React.FC<TemplateSelectorProps> = ({ templates, o
     setIsOpen(false);
   }, [onSelect]);
 
-  const handleExport = useCallback(() => {
-    const dataStr = JSON.stringify(templates, null, 2);
-    const blob = new Blob([dataStr], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'templates.json';
-    link.click();
-    URL.revokeObjectURL(url);
-  }, [templates]);
-
-  const handleImport = useCallback(() => {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = '.json';
-    input.onchange = async (e) => {
-      const file = (e.target as HTMLInputElement).files?.[0];
-      if (!file) return;
-      const text = await file.text();
-      try {
-        const imported = JSON.parse(text) as Template[];
-        localStorage.setItem('custom_templates', JSON.stringify(imported));
-        window.location.reload();
-      } catch (err) {
-        console.error('Invalid template file');
-      }
-    };
-    input.click();
-  }, []);
-
   return (
     <div className="space-y-3">
       <h3 className="text-sm font-medium text-gray-300">{t('templates.title')}</h3>
@@ -74,21 +44,6 @@ export const TemplateSelector: React.FC<TemplateSelectorProps> = ({ templates, o
             ))}
           </div>
         )}
-      </div>
-
-      <div className="flex gap-2">
-        <button
-          onClick={handleExport}
-          className="flex-1 px-3 py-1.5 bg-gray-700 hover:bg-gray-600 rounded text-xs text-gray-300 transition-colors"
-        >
-          {t('templates.export')}
-        </button>
-        <button
-          onClick={handleImport}
-          className="flex-1 px-3 py-1.5 bg-gray-700 hover:bg-gray-600 rounded text-xs text-gray-300 transition-colors"
-        >
-          {t('templates.import')}
-        </button>
       </div>
     </div>
   );
