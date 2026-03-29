@@ -1,0 +1,95 @@
+{
+  "app": {
+    "title": "PMAX Ad Generator",
+    "export": "Export JPG",
+    "save": "Save project",
+    "load": "Load project",
+    "new": "New project",
+    "language": "Language"
+  },
+  "templates": {
+    "title": "Templates",
+    "select": "Select template",
+    "blank": "Blank",
+    "categories": {
+      "offer": "Offer",
+      "product": "Product",
+      "event": "Event"
+    },
+    "export": "Export template",
+    "import": "Import template"
+  },
+  "format": {
+    "title": "Format",
+    "landscape": "Landscape (1.91:1)",
+    "square": "Square (1:1)",
+    "portrait": "Portrait (4:5)",
+    "story": "Story (9:16)"
+  },
+  "background": {
+    "title": "Background",
+    "color": "Color",
+    "presets": "Presets"
+  },
+  "logo": {
+    "title": "Logo",
+    "upload": "Upload logo",
+    "remove": "Remove logo",
+    "position": "Position",
+    "size": "Size",
+    "opacity": "Opacity",
+    "positions": {
+      "left-top": "Left top",
+      "right-top": "Right top",
+      "center": "Center"
+    }
+  },
+  "packshot": {
+    "title": "Packshot",
+    "upload": "Upload packshot",
+    "remove": "Remove packshot",
+    "position": "Position H",
+    "size": "Size",
+    "opacity": "Opacity"
+  },
+  "text": {
+    "title": "Main Text",
+    "placeholder": "Enter ad content...",
+    "font": "Font",
+    "size": "Size",
+    "color": "Color",
+    "positionX": "Position X",
+    "positionY": "Position Y",
+    "maxWidth": "Max width"
+  },
+  "cta": {
+    "title": "CTA Button",
+    "text": "Button text",
+    "textPlaceholder": "Buy now",
+    "position": "Position",
+    "bgColor": "Background color",
+    "textColor": "Text color",
+    "borderRadius": "Border radius",
+    "positions": {
+      "center": "Center",
+      "bottom-right": "Bottom right"
+    }
+  },
+  "projects": {
+    "title": "Saved projects",
+    "empty": "No saved projects",
+    "saved": "Project saved",
+    "loaded": "Project loaded",
+    "deleted": "Project deleted",
+    "confirmDelete": "Are you sure you want to delete this project?"
+  },
+  "export": {
+    "success": "Export successful",
+    "error": "Export error"
+  },
+  "confirm": {
+    "unsaved": "You have unsaved changes. Continue?",
+    "yes": "Yes",
+    "no": "No"
+  }
+}

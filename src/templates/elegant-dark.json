@@ -1,0 +1,40 @@
+{
+  "id": "elegant-dark",
+  "name": "Elegancki - Ciemny",
+  "nameEn": "Elegant - Dark",
+  "category": "product",
+  "config": {
+    "format": "square",
+    "background": { "color": "#1A1A2E" },
+    "logo": {
+      "enabled": true,
+      "position": "right-top",
+      "scale": 10,
+      "opacity": 80
+    },
+    "packshot": {
+      "enabled": true,
+      "positionX": 0,
+      "scale": 60,
+      "opacity": 100
+    },
+    "text": {
+      "enabled": true,
+      "content": "Premium Quality",
+      "fontFamily": "Playfair Display",
+      "fontSize": 42,
+      "color": "#D4AF37",
+      "positionX": 50,
+      "positionY": 80,
+      "maxWidth": 80
+    },
+    "cta": {
+      "enabled": true,
+      "text": "Zobacz więcej",
+      "position": "bottom-right",
+      "backgroundColor": "#D4AF37",
+      "textColor": "#1A1A2E",
+      "borderRadius": 8
+    }
+  }
+}

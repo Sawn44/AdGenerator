@@ -1,0 +1,95 @@
+{
+  "app": {
+    "title": "Generator Reklam PMAX",
+    "export": "Eksportuj JPG",
+    "save": "Zapisz projekt",
+    "load": "Wczytaj projekt",
+    "new": "Nowy projekt",
+    "language": "Język"
+  },
+  "templates": {
+    "title": "Szablony",
+    "select": "Wybierz szablon",
+    "blank": "Pusty",
+    "categories": {
+      "offer": "Oferta",
+      "product": "Produkt",
+      "event": "Wydarzenie"
+    },
+    "export": "Eksportuj szablon",
+    "import": "Importuj szablon"
+  },
+  "format": {
+    "title": "Format",
+    "landscape": "Poziomy (1.91:1)",
+    "square": "Kwadrat (1:1)",
+    "portrait": "Pionowy (4:5)",
+    "story": "Story (9:16)"
+  },
+  "background": {
+    "title": "Tło",
+    "color": "Kolor",
+    "presets": "Presety"
+  },
+  "logo": {
+    "title": "Logo",
+    "upload": "Wgraj logo",
+    "remove": "Usuń logo",
+    "position": "Pozycja",
+    "size": "Rozmiar",
+    "opacity": "Przezroczystość",
+    "positions": {
+      "left-top": "Lewy górny",
+      "right-top": "Prawy górny",
+      "center": "Środek"
+    }
+  },
+  "packshot": {
+    "title": "Packshot",
+    "upload": "Wgraj packshot",
+    "remove": "Usuń packshot",
+    "position": "Pozycja H",
+    "size": "Rozmiar",
+    "opacity": "Przezroczystość"
+  },
+  "text": {
+    "title": "Tekst główny",
+    "placeholder": "Wpisz treść reklamy...",
+    "font": "Czcionka",
+    "size": "Rozmiar",
+    "color": "Kolor",
+    "positionX": "Pozycja X",
+    "positionY": "Pozycja Y",
+    "maxWidth": "Maks. szerokość"
+  },
+  "cta": {
+    "title": "Przycisk CTA",
+    "text": "Tekst przycisku",
+    "textPlaceholder": "Kup teraz",
+    "position": "Pozycja",
+    "bgColor": "Kolor tła",
+    "textColor": "Kolor tekstu",
+    "borderRadius": "Zaokrąglenie",
+    "positions": {
+      "center": "Środek",
+      "bottom-right": "Prawy dolny"
+    }
+  },
+  "projects": {
+    "title": "Zapisane projekty",
+    "empty": "Brak zapisanych projektów",
+    "saved": "Projekt zapisany",
+    "loaded": "Projekt wczytany",
+    "deleted": "Projekt usunięty",
+    "confirmDelete": "Czy na pewno chcesz usunąć ten projekt?"
+  },
+  "export": {
+    "success": "Eksport zakończony pomyślnie",
+    "error": "Błąd eksportu"
+  },
+  "confirm": {
+    "unsaved": "Masz niezapisane zmiany. Czy na pewno chcesz kontynuować?",
+    "yes": "Tak",
+    "no": "Nie"
+  }
+}

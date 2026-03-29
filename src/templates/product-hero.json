@@ -1,0 +1,33 @@
+{
+  "id": "product-hero",
+  "name": "Produkt - Hero",
+  "nameEn": "Product - Hero",
+  "category": "product",
+  "config": {
+    "format": "landscape",
+    "background": { "color": "#F5F5F5" },
+    "logo": {
+      "enabled": true,
+      "position": "left-top",
+      "scale": 15,
+      "opacity": 100
+    },
+    "packshot": {
+      "enabled": true,
+      "positionX": 0,
+      "scale": 50,
+      "opacity": 100
+    },
+    "text": {
+      "enabled": true,
+      "content": "Odkryj naszą nową kolekcję!",
+      "fontFamily": "Montserrat",
+      "fontSize": 48,
+      "color": "#000000",
+      "positionX": 50,
+      "positionY": 75,
+      "maxWidth": 80
+    },
+    "cta": null
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "promo-red",
+  "name": "Promocja - Czerwony",
+  "nameEn": "Promo - Red",
+  "category": "offer",
+  "config": {
+    "format": "landscape",
+    "background": { "color": "#E94560" },
+    "logo": {
+      "enabled": true,
+      "position": "left-top",
+      "scale": 12,
+      "opacity": 100
+    },
+    "packshot": null,
+    "text": {
+      "enabled": true,
+      "content": "50% ZNIŻKI\nTylko teraz!",
+      "fontFamily": "Poppins",
+      "fontSize": 64,
+      "color": "#FFFFFF",
+      "positionX": 50,
+      "positionY": 40,
+      "maxWidth": 70
+    },
+    "cta": {
+      "enabled": true,
+      "text": "Kup teraz",
+      "position": "center",
+      "backgroundColor": "#FFFFFF",
+      "textColor": "#E94560",
+      "borderRadius": 30
+    }
+  }
+}

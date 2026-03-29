@@ -1,0 +1,14 @@
+{
+  "id": "blank-square",
+  "name": "Pusty - Kwadrat",
+  "nameEn": "Blank - Square",
+  "category": "blank",
+  "config": {
+    "format": "square",
+    "background": { "color": "#FFFFFF" },
+    "logo": null,
+    "packshot": null,
+    "text": null,
+    "cta": null
+  }
+}

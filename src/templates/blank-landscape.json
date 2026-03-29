@@ -1,0 +1,14 @@
+{
+  "id": "blank-landscape",
+  "name": "Pusty - Poziomy",
+  "nameEn": "Blank - Landscape",
+  "category": "blank",
+  "config": {
+    "format": "landscape",
+    "background": { "color": "#FFFFFF" },
+    "logo": null,
+    "packshot": null,
+    "text": null,
+    "cta": null
+  }
+}
