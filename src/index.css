@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@source "../src/**/*.{tsx,jsx,ts,js}";
 
 * {
   box-sizing: border-box;
