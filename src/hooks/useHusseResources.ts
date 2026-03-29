@@ -20,10 +20,10 @@ function isImageFile(filename: string): boolean {
 
 function getResourceType(filename: string): 'logo' | 'packshot' {
   const lower = filename.toLowerCase();
-  if (lower.includes('logo') || lower.includes('brand') || lower.includes('transparent')) {
-    return 'packshot';
+  if (lower.includes('logo') || lower.includes('brand')) {
+    return 'logo';
   }
-  return 'logo';
+  return 'packshot';
 }
 
 export function useHusseResources() {
