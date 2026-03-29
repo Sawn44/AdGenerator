@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { CursorArrowRaysIcon } from '@heroicons/react/24/outline';
 import { CTA_POSITIONS, PRESET_COLORS } from '../../constants/formats';
 import type { CTAConfig } from '../../types/template';
 import { Select } from '../common/Select';
@@ -44,6 +45,7 @@ export const CTASettings: React.FC<CTASettingsProps> = ({ config, onChange }) =>
     <div className="space-y-3">
       <Toggle
         label={t('cta.title')}
+        icon={<CursorArrowRaysIcon className="w-4 h-4" />}
         checked={config?.enabled ?? false}
         onChange={handleToggle}
       />

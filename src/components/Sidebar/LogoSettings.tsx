@@ -1,9 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { LOGO_POSITIONS } from '../../constants/formats';
+import { PhotoIcon } from '@heroicons/react/24/outline';
 import type { LogoConfig } from '../../types/template';
 import { FileUploader } from '../common/FileUploader';
-import { Select } from '../common/Select';
 import { Slider } from '../common/Slider';
 import { Toggle } from '../common/Toggle';
 
@@ -18,13 +17,14 @@ export const LogoSettings: React.FC<LogoSettingsProps> = ({
   onChange,
   onLogoUpload,
 }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const handleToggle = (enabled: boolean) => {
     if (enabled) {
       onChange({
         enabled: true,
-        position: 'left-top',
+        positionX: 0,
+        positionY: 0,
         scale: 15,
         opacity: 100,
       });
@@ -39,15 +39,11 @@ export const LogoSettings: React.FC<LogoSettingsProps> = ({
     }
   };
 
-  const positions = LOGO_POSITIONS.map(p => ({
-    value: p.value,
-    label: i18n.language === 'pl' ? p.label : p.labelEn,
-  }));
-
   return (
     <div className="space-y-3">
       <Toggle
         label={t('logo.title')}
+        icon={<PhotoIcon className="w-4 h-4" />}
         checked={config?.enabled ?? false}
         onChange={handleToggle}
       />
@@ -59,11 +55,22 @@ export const LogoSettings: React.FC<LogoSettingsProps> = ({
             onFileSelect={onLogoUpload}
           />
           
-          <Select
-            label={t('logo.position')}
-            value={config.position}
-            options={positions}
-            onChange={(value) => handleChange('position', value as LogoConfig['position'])}
+          <Slider
+            label={t('logo.position') + ' X'}
+            value={config.positionX}
+            onChange={(value) => handleChange('positionX', value)}
+            min={-50}
+            max={50}
+            unit="%"
+          />
+          
+          <Slider
+            label={t('logo.position') + ' Y'}
+            value={config.positionY}
+            onChange={(value) => handleChange('positionY', value)}
+            min={0}
+            max={100}
+            unit="%"
           />
           
           <Slider

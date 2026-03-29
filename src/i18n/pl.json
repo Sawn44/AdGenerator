@@ -35,14 +35,10 @@
     "title": "Logo",
     "upload": "Wgraj logo",
     "remove": "Usuń logo",
-    "position": "Pozycja",
+    "positionX": "Pozycja X",
+    "positionY": "Pozycja Y",
     "size": "Rozmiar",
-    "opacity": "Przezroczystość",
-    "positions": {
-      "left-top": "Lewy górny",
-      "right-top": "Prawy górny",
-      "center": "Środek"
-    }
+    "opacity": "Przezroczystość"
   },
   "packshot": {
     "title": "Packshot",
@@ -55,6 +51,16 @@
   "text": {
     "title": "Tekst główny",
     "placeholder": "Wpisz treść reklamy...",
+    "font": "Czcionka",
+    "size": "Rozmiar",
+    "color": "Kolor",
+    "positionX": "Pozycja X",
+    "positionY": "Pozycja Y",
+    "maxWidth": "Maks. szerokość"
+  },
+  "subtext": {
+    "title": "Tekst dodatkowy",
+    "placeholder": "Dodatkowy tekst...",
     "font": "Czcionka",
     "size": "Rozmiar",
     "color": "Kolor",

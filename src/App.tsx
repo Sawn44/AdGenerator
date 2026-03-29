@@ -13,11 +13,11 @@ import promoRed from './templates/promo-red.json';
 import elegantDark from './templates/elegant-dark.json';
 
 const builtInTemplates: Template[] = [
-  blankLandscape as Template,
-  blankSquare as Template,
-  productHero as Template,
-  promoRed as Template,
-  elegantDark as Template,
+  blankLandscape as unknown as Template,
+  blankSquare as unknown as Template,
+  productHero as unknown as Template,
+  promoRed as unknown as Template,
+  elegantDark as unknown as Template,
 ];
 
 const DEFAULT_CONFIG: TemplateConfig = {
@@ -26,6 +26,7 @@ const DEFAULT_CONFIG: TemplateConfig = {
   logo: null,
   packshot: null,
   text: null,
+  subtext: null,
   cta: null,
 };
 

@@ -16,6 +16,7 @@ export const PRESET_COLORS = [
 ];
 
 export const GOOGLE_FONTS = [
+  'Roboto Slab',
   'Roboto',
   'Open Sans',
   'Lato',
@@ -36,12 +37,6 @@ export const GOOGLE_FONTS = [
   'Cormorant Garamond',
   'Archivo',
   'Karla',
-];
-
-export const LOGO_POSITIONS = [
-  { value: 'left-top', label: 'Lewy górny', labelEn: 'Left top' },
-  { value: 'right-top', label: 'Prawy górny', labelEn: 'Right top' },
-  { value: 'center', label: 'Środek', labelEn: 'Center' },
 ];
 
 export const CTA_POSITIONS = [

@@ -32,11 +32,14 @@ export const CanvasEditor: React.FC<CanvasEditorProps> = ({
       if (config.text?.fontFamily) {
         fonts.add(config.text.fontFamily);
       }
+      if (config.subtext?.fontFamily) {
+        fonts.add(config.subtext.fontFamily);
+      }
       await Promise.all([...fonts].map(loadFont));
       setFontsLoaded(true);
     };
     loadFontsInConfig();
-  }, [config.text?.fontFamily]);
+  }, [config.text?.fontFamily, config.subtext?.fontFamily]);
 
   useEffect(() => {
     if (logoData) {
@@ -88,13 +91,13 @@ export const CanvasEditor: React.FC<CanvasEditorProps> = ({
     ctx.fillRect(0, 0, width, height);
 
     if (config.packshot?.enabled && packshotImg) {
-      const { positionX, scale, opacity } = config.packshot;
+      const { positionX, positionY, scale, opacity } = config.packshot;
       const maxWidth = width * (scale / 100);
       const aspectRatio = packshotImg.height / packshotImg.width;
       const imgHeight = maxWidth * aspectRatio;
       
       const x = width / 2 + (positionX / 100) * (width / 2);
-      const y = height / 2 - imgHeight / 2 + (height * 0.1);
+      const y = (positionY / 100) * height - imgHeight / 2;
       
       ctx.globalAlpha = opacity / 100;
       ctx.drawImage(packshotImg, x - maxWidth / 2, y, maxWidth, imgHeight);
@@ -112,6 +115,24 @@ export const CanvasEditor: React.FC<CanvasEditorProps> = ({
       const maxWidthPx = (textMaxWidth / 100) * width;
       const lines = wrapText(ctx, content, maxWidthPx);
       const lineHeight = fontSize * 1.2;
+      const startY = (positionY / 100) * height - (lines.length * lineHeight) / 2;
+      
+      lines.forEach((line, i) => {
+        ctx.fillText(line, (positionX / 100) * width, startY + i * lineHeight);
+      });
+    }
+
+    if (config.subtext?.enabled && config.subtext.content) {
+      const { content, fontFamily, fontSize, color, positionX, positionY, maxWidth: textMaxWidth } = config.subtext;
+      
+      ctx.font = `${fontSize}px "${fontFamily}", sans-serif`;
+      ctx.fillStyle = color;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      
+      const maxWidthPx = (textMaxWidth / 100) * width;
+      const lines = wrapText(ctx, content, maxWidthPx);
+      const lineHeight = fontSize * 1.3;
       const startY = (positionY / 100) * height - (lines.length * lineHeight) / 2;
       
       lines.forEach((line, i) => {
@@ -145,32 +166,16 @@ export const CanvasEditor: React.FC<CanvasEditorProps> = ({
     }
 
     if (config.logo?.enabled && logoImg) {
-      const { position, scale, opacity } = config.logo;
+      const { positionX, positionY, scale, opacity } = config.logo;
       const logoWidth = width * (scale / 100);
       const aspectRatio = logoImg.height / logoImg.width;
       const logoHeight = logoWidth * aspectRatio;
       
-      let x: number, y: number;
-      switch (position) {
-        case 'left-top':
-          x = 30;
-          y = 30;
-          break;
-        case 'right-top':
-          x = width - logoWidth - 30;
-          y = 30;
-          break;
-        case 'center':
-          x = width / 2 - logoWidth / 2;
-          y = 30;
-          break;
-        default:
-          x = 30;
-          y = 30;
-      }
+      const x = width / 2 + (positionX / 100) * (width / 2);
+      const y = (positionY / 100) * height;
       
       ctx.globalAlpha = opacity / 100;
-      ctx.drawImage(logoImg, x, y, logoWidth, logoHeight);
+      ctx.drawImage(logoImg, x - logoWidth / 2, y, logoWidth, logoHeight);
       ctx.globalAlpha = 1;
     }
   }, [canvasRef, config, logoImg, packshotImg, width, height]);

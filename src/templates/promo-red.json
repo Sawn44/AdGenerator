@@ -8,7 +8,8 @@
     "background": { "color": "#E94560" },
     "logo": {
       "enabled": true,
-      "position": "left-top",
+      "positionX": 5,
+      "positionY": 5,
       "scale": 12,
       "opacity": 100
     },
@@ -23,6 +24,7 @@
       "positionY": 40,
       "maxWidth": 70
     },
+    "subtext": null,
     "cta": {
       "enabled": true,
       "text": "Kup teraz",

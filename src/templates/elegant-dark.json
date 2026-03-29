@@ -8,13 +8,15 @@
     "background": { "color": "#1A1A2E" },
     "logo": {
       "enabled": true,
-      "position": "right-top",
+      "positionX": 95,
+      "positionY": 5,
       "scale": 10,
       "opacity": 80
     },
     "packshot": {
       "enabled": true,
       "positionX": 0,
+      "positionY": 50,
       "scale": 60,
       "opacity": 100
     },
@@ -28,6 +30,7 @@
       "positionY": 80,
       "maxWidth": 80
     },
+    "subtext": null,
     "cta": {
       "enabled": true,
       "text": "Zobacz więcej",

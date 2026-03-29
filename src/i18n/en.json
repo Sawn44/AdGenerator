@@ -35,14 +35,10 @@
     "title": "Logo",
     "upload": "Upload logo",
     "remove": "Remove logo",
-    "position": "Position",
+    "positionX": "Position X",
+    "positionY": "Position Y",
     "size": "Size",
-    "opacity": "Opacity",
-    "positions": {
-      "left-top": "Left top",
-      "right-top": "Right top",
-      "center": "Center"
-    }
+    "opacity": "Opacity"
   },
   "packshot": {
     "title": "Packshot",
@@ -55,6 +51,16 @@
   "text": {
     "title": "Main Text",
     "placeholder": "Enter ad content...",
+    "font": "Font",
+    "size": "Size",
+    "color": "Color",
+    "positionX": "Position X",
+    "positionY": "Position Y",
+    "maxWidth": "Max width"
+  },
+  "subtext": {
+    "title": "Secondary Text",
+    "placeholder": "Additional text...",
     "font": "Font",
     "size": "Size",
     "color": "Color",

@@ -4,7 +4,8 @@ export type FormatType = 'landscape' | 'square' | 'portrait' | 'story';
 
 export interface LogoConfig {
   enabled: boolean;
-  position: LogoPosition;
+  positionX: number;
+  positionY: number;
   scale: number;
   opacity: number;
 }
@@ -12,11 +13,23 @@ export interface LogoConfig {
 export interface PackshotConfig {
   enabled: boolean;
   positionX: number;
+  positionY: number;
   scale: number;
   opacity: number;
 }
 
 export interface TextConfig {
+  enabled: boolean;
+  content: string;
+  fontFamily: string;
+  fontSize: number;
+  color: string;
+  positionX: number;
+  positionY: number;
+  maxWidth: number;
+}
+
+export interface SubtextConfig {
   enabled: boolean;
   content: string;
   fontFamily: string;
@@ -46,6 +59,7 @@ export interface TemplateConfig {
   logo: LogoConfig | null;
   packshot: PackshotConfig | null;
   text: TextConfig | null;
+  subtext: SubtextConfig | null;
   cta: CTAConfig | null;
 }
 

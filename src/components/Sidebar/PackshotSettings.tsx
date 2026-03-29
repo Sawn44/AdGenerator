@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { CubeIcon } from '@heroicons/react/24/outline';
 import type { PackshotConfig } from '../../types/template';
 import { FileUploader } from '../common/FileUploader';
 import { Slider } from '../common/Slider';
@@ -23,6 +24,7 @@ export const PackshotSettings: React.FC<PackshotSettingsProps> = ({
       onChange({
         enabled: true,
         positionX: 0,
+        positionY: 30,
         scale: 50,
         opacity: 100,
       });
@@ -41,6 +43,7 @@ export const PackshotSettings: React.FC<PackshotSettingsProps> = ({
     <div className="space-y-3">
       <Toggle
         label={t('packshot.title')}
+        icon={<CubeIcon className="w-4 h-4" />}
         checked={config?.enabled ?? false}
         onChange={handleToggle}
       />
@@ -53,11 +56,20 @@ export const PackshotSettings: React.FC<PackshotSettingsProps> = ({
           />
           
           <Slider
-            label={t('packshot.position')}
+            label={t('packshot.position') + ' X'}
             value={config.positionX}
             onChange={(value) => handleChange('positionX', value)}
             min={-50}
             max={50}
+            unit="%"
+          />
+          
+          <Slider
+            label={t('packshot.position') + ' Y'}
+            value={config.positionY}
+            onChange={(value) => handleChange('positionY', value)}
+            min={0}
+            max={100}
             unit="%"
           />
           
