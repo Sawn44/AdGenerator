@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useCallback, useState } from 'react';
+import { useEffect, useRef, useCallback, useState } from 'react';
 import { FORMATS } from '../../constants/formats';
 import type { TemplateConfig, FormatType } from '../../types/template';
 import { loadFont } from '../../utils/fonts';
+import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 
 interface CanvasEditorProps {
   config: TemplateConfig;
@@ -19,7 +20,7 @@ export const CanvasEditor: React.FC<CanvasEditorProps> = ({
   canvasRef,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [scale, setScale] = useState(1);
+  const [displayScale, setDisplayScale] = useState(1);
   const [logoImg, setLogoImg] = useState<HTMLImageElement | null>(null);
   const [packshotImg, setPackshotImg] = useState<HTMLImageElement | null>(null);
   const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -97,21 +98,33 @@ export const CanvasEditor: React.FC<CanvasEditorProps> = ({
     loadPackshot();
   }, [packshotData, config.packshot?.packshotUrl]);
 
-  const calculateScale = useCallback(() => {
-    if (!containerRef.current) return;
+  const calculateFitScale = useCallback(() => {
+    if (!containerRef.current) return 1;
     const container = containerRef.current;
     const maxWidth = container.clientWidth - 40;
     const maxHeight = container.clientHeight - 40;
     const scaleX = maxWidth / width;
     const scaleY = maxHeight / height;
-    setScale(Math.min(scaleX, scaleY, 1));
+    return Math.min(scaleX, scaleY, 1);
   }, [width, height]);
 
   useEffect(() => {
-    calculateScale();
-    window.addEventListener('resize', calculateScale);
-    return () => window.removeEventListener('resize', calculateScale);
-  }, [calculateScale]);
+    const fitScale = calculateFitScale();
+    setDisplayScale(fitScale);
+    const handleResize = () => {
+      setDisplayScale(calculateFitScale());
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [calculateFitScale]);
+
+  const handleZoomIn = () => {
+    setDisplayScale(prev => Math.min(prev + 0.1, 3));
+  };
+
+  const handleZoomOut = () => {
+    setDisplayScale(prev => Math.max(prev - 0.1, 0.2));
+  };
 
   const draw = useCallback(() => {
     const canvas = canvasRef.current;
@@ -133,10 +146,10 @@ export const CanvasEditor: React.FC<CanvasEditorProps> = ({
       const imgHeight = maxWidth * aspectRatio;
       
       const x = (positionX / 100) * width;
-      const y = (positionY / 100) * height - imgHeight / 2;
+      const y = (positionY / 100) * height;
       
       ctx.globalAlpha = opacity / 100;
-      ctx.drawImage(packshotImg, x - maxWidth / 2, y, maxWidth, imgHeight);
+      ctx.drawImage(packshotImg, x - maxWidth / 2, y - imgHeight / 2, maxWidth, imgHeight);
       ctx.globalAlpha = 1;
     }
 
@@ -211,7 +224,7 @@ export const CanvasEditor: React.FC<CanvasEditorProps> = ({
       const y = (positionY / 100) * height;
       
       ctx.globalAlpha = opacity / 100;
-      ctx.drawImage(logoImg, x - logoWidth / 2, y, logoWidth, logoHeight);
+      ctx.drawImage(logoImg, x - logoWidth / 2, y - logoHeight / 2, logoWidth, logoHeight);
       ctx.globalAlpha = 1;
     }
   }, [canvasRef, config, logoImg, packshotImg, width, height]);
@@ -223,16 +236,39 @@ export const CanvasEditor: React.FC<CanvasEditorProps> = ({
   }, [draw, fontsLoaded]);
 
   return (
-    <div ref={containerRef} className="flex-1 flex items-center justify-center bg-gray-200 p-5 overflow-hidden">
-      <canvas
-        ref={canvasRef}
-        style={{
-          width: width * scale,
-          height: height * scale,
-          boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
-        }}
-        className="bg-white"
-      />
+    <div ref={containerRef} className="flex-1 flex flex-col bg-gray-200 p-5 overflow-hidden">
+      <div className="flex justify-end mb-2">
+        <div className="flex items-center gap-1 bg-white rounded-lg shadow px-2 py-1">
+          <button
+            onClick={handleZoomOut}
+            className="p-1 hover:bg-gray-100 rounded transition-colors"
+            title="Pomniejsz"
+          >
+            <MinusIcon className="w-4 h-4 text-gray-700" />
+          </button>
+          <span className="text-sm text-gray-700 min-w-[50px] text-center">
+            {Math.round(displayScale * 100)}%
+          </span>
+          <button
+            onClick={handleZoomIn}
+            className="p-1 hover:bg-gray-100 rounded transition-colors"
+            title="Powiększ"
+          >
+            <PlusIcon className="w-4 h-4 text-gray-700" />
+          </button>
+        </div>
+      </div>
+      <div className="flex-1 flex items-center justify-center overflow-hidden">
+        <canvas
+          ref={canvasRef}
+          style={{
+            width: width * displayScale,
+            height: height * displayScale,
+            boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
+          }}
+          className="bg-white"
+        />
+      </div>
     </div>
   );
 };

@@ -74,7 +74,7 @@ export const PackshotSettings: FC<PackshotSettingsProps> = ({
             value={config.positionX}
             onChange={(value) => handleChange('positionX', value)}
             min={-50}
-            max={50}
+            max={150}
             unit="%"
           />
           
@@ -86,23 +86,6 @@ export const PackshotSettings: FC<PackshotSettingsProps> = ({
             max={100}
             unit="%"
           />
-          
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-gray-400 min-w-[60px]">{t('packshot.size')}</span>
-            <button
-              onClick={() => handleChange('scale', Math.max(10, config.scale - 10))}
-              className="px-2 py-1 bg-gray-700 hover:bg-gray-600 rounded text-white text-sm"
-            >
-              -
-            </button>
-            <span className="text-sm text-gray-300 w-12 text-center">{config.scale}%</span>
-            <button
-              onClick={() => handleChange('scale', Math.min(200, config.scale + 10))}
-              className="px-2 py-1 bg-gray-700 hover:bg-gray-600 rounded text-white text-sm"
-            >
-              +
-            </button>
-          </div>
           
           <Slider
             label=""

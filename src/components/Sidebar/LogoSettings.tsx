@@ -129,23 +129,6 @@ export const LogoSettings: FC<LogoSettingsProps> = ({
             unit="%"
           />
           
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-gray-400 min-w-[60px]">{t('logo.size')}</span>
-            <button
-              onClick={() => handleChange('scale', Math.max(5, config.scale - 10))}
-              className="px-2 py-1 bg-gray-700 hover:bg-gray-600 rounded text-white text-sm"
-            >
-              -
-            </button>
-            <span className="text-sm text-gray-300 w-12 text-center">{config.scale}%</span>
-            <button
-              onClick={() => handleChange('scale', Math.min(100, config.scale + 10))}
-              className="px-2 py-1 bg-gray-700 hover:bg-gray-600 rounded text-white text-sm"
-            >
-              +
-            </button>
-          </div>
-          
           <Slider
             label=""
             value={config.scale}
