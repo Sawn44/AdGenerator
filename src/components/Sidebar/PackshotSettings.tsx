@@ -88,7 +88,7 @@ export const PackshotSettings: FC<PackshotSettingsProps> = ({
           />
           
           <Slider
-            label=""
+            label={t('packshot.size')}
             value={config.scale}
             onChange={(value) => handleChange('scale', value)}
             min={10}

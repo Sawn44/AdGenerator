@@ -91,24 +91,22 @@
     "deleted": "Project deleted",
     "confirmDelete": "Are you sure you want to delete this project?"
   },
-  "husse": {
-    "title": "Husse Resources",
+  "resources": {
+    "title": "Resources",
     "active": "Active",
     "passwordPlaceholder": "Enter password...",
     "unlock": "Unlock",
     "wrongPassword": "Incorrect password",
-    "description": "Husse resources access enabled. Use \"Choose\" button in logo/packshot settings.",
-    "disable": "Disable Husse mode",
-    "selectResource": "Select Husse resource",
+    "description": "{{name}} resources access enabled. Use \"Choose\" button in logo/packshot settings.",
+    "disable": "Disable access",
+    "selectResource": "Select {{name}} resource",
     "noResources": "No resources",
     "loading": "Loading resources...",
-    "error": "Failed to load resources"
-  },
-  "resources": {
-    "title": "Resources",
-    "select": "Select",
-    "logo": "Logo",
-    "packshot": "Packshot"
+    "error": "Failed to load resources",
+    "sources": {
+      "husse": "Husse",
+      "cirwins": "Cirwins"
+    }
   },
   "export": {
     "success": "Export successful",

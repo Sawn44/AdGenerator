@@ -1,15 +1,37 @@
 import { useState, useCallback } from 'react';
 
+export type ResourceSource = 'husse' | 'cirwins';
+
 export interface HusseResource {
   name: string;
   url: string;
   type: 'logo' | 'packshot';
 }
 
-const HUSSE_DIRECTORIES = [
-  { url: 'https://adgen.dagere.pl/husse/', defaultType: 'packshot' as const },
-  { url: 'https://adgen.dagere.pl/husse/TRANSPARENT/', defaultType: 'packshot' as const },
-];
+export interface ResourceSourceConfig {
+  name: string;
+  password: string;
+  directories: { url: string; defaultType: 'logo' | 'packshot' }[];
+}
+
+export const RESOURCE_SOURCES: Record<ResourceSource, ResourceSourceConfig> = {
+  husse: {
+    name: 'Husse',
+    password: 'Husse',
+    directories: [
+      { url: 'https://adgen.dagere.pl/husse/', defaultType: 'packshot' },
+      { url: 'https://adgen.dagere.pl/husse/TRANSPARENT/', defaultType: 'packshot' },
+    ],
+  },
+  cirwins: {
+    name: 'Cirwins',
+    password: 'Cirwins',
+    directories: [
+      { url: 'https://adgen.dagere.pl/cirwins/', defaultType: 'packshot' },
+      { url: 'https://adgen.dagere.pl/cirwins/TRANSPARENT/', defaultType: 'packshot' },
+    ],
+  },
+};
 
 const IMAGE_EXTENSIONS = ['.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg'];
 
@@ -30,22 +52,25 @@ export function useHusseResources() {
   const [resources, setResources] = useState<HusseResource[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [currentSource, setCurrentSource] = useState<ResourceSource | null>(null);
 
-  const fetchResources = useCallback(async () => {
+  const fetchResources = useCallback(async (source: ResourceSource) => {
     setLoading(true);
     setError(null);
-    
+    setCurrentSource(source);
+
     try {
+      const config = RESOURCE_SOURCES[source];
       const allFiles: HusseResource[] = [];
-      
-      for (const dir of HUSSE_DIRECTORIES) {
+
+      for (const dir of config.directories) {
         const response = await fetch(dir.url);
         const text = await response.text();
-        
+
         const parser = new DOMParser();
         const doc = parser.parseFromString(text, 'text/html');
         const links = doc.querySelectorAll('a');
-        
+
         links.forEach(link => {
           const href = link.getAttribute('href');
           if (href && !href.startsWith('?') && href !== '/') {
@@ -60,7 +85,7 @@ export function useHusseResources() {
           }
         });
       }
-      
+
       setResources(allFiles);
     } catch (err) {
       setError('Nie udało się pobrać zasobów');
@@ -68,6 +93,12 @@ export function useHusseResources() {
     } finally {
       setLoading(false);
     }
+  }, []);
+
+  const clearResources = useCallback(() => {
+    setResources([]);
+    setCurrentSource(null);
+    setError(null);
   }, []);
 
   const getLogos = useCallback(() => {
@@ -83,7 +114,9 @@ export function useHusseResources() {
     loading,
     error,
     fetchResources,
+    clearResources,
     getLogos,
     getPackshots,
+    currentSource,
   };
 }

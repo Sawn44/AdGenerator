@@ -91,24 +91,22 @@
     "deleted": "Projekt usunięty",
     "confirmDelete": "Czy na pewno chcesz usunąć ten projekt?"
   },
-  "husse": {
-    "title": "Zasoby Husse",
+  "resources": {
+    "title": "Zasoby",
     "active": "Aktywny",
     "passwordPlaceholder": "Wpisz hasło...",
     "unlock": "Odblokuj",
     "wrongPassword": "Nieprawidłowe hasło",
-    "description": "Włączony dostęp do zasobów Husse. Użyj przycisku \"Wybierz\" w ustawieniach logo/packshot.",
-    "disable": "Wyłącz tryb Husse",
-    "selectResource": "Wybierz zasób Husse",
+    "description": "Włączony dostęp do zasobów {{name}}. Użyj przycisku \"Wybierz\" w ustawieniach logo/packshot.",
+    "disable": "Wyłącz dostęp",
+    "selectResource": "Wybierz zasób {{name}}",
     "noResources": "Brak zasobów",
     "loading": "Ładowanie zasobów...",
-    "error": "Błąd ładowania zasobów"
-  },
-  "resources": {
-    "title": "Zasoby",
-    "select": "Wybierz",
-    "logo": "Logo",
-    "packshot": "Packshot"
+    "error": "Błąd ładowania zasobów",
+    "sources": {
+      "husse": "Husse",
+      "cirwins": "Cirwins"
+    }
   },
   "export": {
     "success": "Eksport zakończony pomyślnie",

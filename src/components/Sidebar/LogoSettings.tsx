@@ -130,7 +130,7 @@ export const LogoSettings: FC<LogoSettingsProps> = ({
           />
           
           <Slider
-            label=""
+            label={t('logo.size')}
             value={config.scale}
             onChange={(value) => handleChange('scale', value)}
             min={5}

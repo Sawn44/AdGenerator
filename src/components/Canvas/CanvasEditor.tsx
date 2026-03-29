@@ -20,7 +20,7 @@ export const CanvasEditor: React.FC<CanvasEditorProps> = ({
   canvasRef,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [displayScale, setDisplayScale] = useState(1);
+  const [displayScale, setDisplayScale] = useState(0.5);
   const [logoImg, setLogoImg] = useState<HTMLImageElement | null>(null);
   const [packshotImg, setPackshotImg] = useState<HTMLImageElement | null>(null);
   const [fontsLoaded, setFontsLoaded] = useState(false);

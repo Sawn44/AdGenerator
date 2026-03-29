@@ -12,6 +12,7 @@ import { TemplateSelector } from './TemplateSelector';
 import { ProjectManager } from './ProjectManager';
 import { ResourceSection } from './ResourceSection';
 import { HusseResourceModal } from '../Modal/HusseResourceModal';
+import type { ResourceSource } from '../../hooks/useHusseResources';
 
 interface SidebarProps {
   templates: Template[];
@@ -35,7 +36,7 @@ export const Sidebar: FC<SidebarProps> = ({
   onLoadProject,
 }) => {
   const { t, i18n } = useTranslation();
-  const [isHusseMode, setIsHusseMode] = useState(false);
+  const [activeSource, setActiveSource] = useState<ResourceSource | null>(null);
   const [modalType, setModalType] = useState<'logo' | 'packshot' | null>(null);
 
   const handleChange = <K extends keyof TemplateConfig>(key: K, value: TemplateConfig[K]) => {
@@ -59,8 +60,12 @@ export const Sidebar: FC<SidebarProps> = ({
     closeHusseModal();
   };
 
+  const handleDisable = () => {
+    setActiveSource(null);
+  };
+
   return (
-    <div className="w-80 bg-gray-900 border-r border-gray-700 overflow-y-auto">
+    <div className="min-w-[320px] max-w-[480px] bg-gray-900 border-r border-gray-700 overflow-y-auto">
       <div className="p-4 space-y-4">
         <div className="flex items-center justify-between">
           <h1 className="text-lg font-semibold text-gray-100">{t('app.title')}</h1>
@@ -76,8 +81,9 @@ export const Sidebar: FC<SidebarProps> = ({
         </div>
 
         <ResourceSection
-          isHusseMode={isHusseMode}
-          onToggleHusseMode={setIsHusseMode}
+          activeSource={activeSource}
+          onSelectSource={setActiveSource}
+          onDisable={handleDisable}
         />
 
         <div className="bg-gray-800 rounded-lg p-4 space-y-4">
@@ -106,7 +112,7 @@ export const Sidebar: FC<SidebarProps> = ({
             config={config.logo}
             onChange={(logo) => handleChange('logo', logo)}
             onLogoUpload={onLogoUpload}
-            isHusseMode={isHusseMode}
+            isHusseMode={!!activeSource}
             onOpenHusseModal={() => openHusseModal('logo')}
           />
         </div>
@@ -116,7 +122,7 @@ export const Sidebar: FC<SidebarProps> = ({
             config={config.packshot}
             onChange={(packshot) => handleChange('packshot', packshot)}
             onPackshotUpload={onPackshotUpload}
-            isHusseMode={isHusseMode}
+            isHusseMode={!!activeSource}
             onOpenHusseModal={() => openHusseModal('packshot')}
           />
         </div>
@@ -157,6 +163,7 @@ export const Sidebar: FC<SidebarProps> = ({
           onClose={closeHusseModal}
           onSelect={handleResourceSelect}
           filter={modalType}
+          source={activeSource!}
         />
       )}
     </div>
