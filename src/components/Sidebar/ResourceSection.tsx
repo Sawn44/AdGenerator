@@ -16,14 +16,15 @@ export const ResourceSection: FC<ResourceSectionProps> = ({
 }) => {
   const { t } = useTranslation();
   const [password, setPassword] = useState('');
-  const [selectedSource, setSelectedSource] = useState<ResourceSource>('husse');
   const [error, setError] = useState(false);
 
   const handlePasswordSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const config = RESOURCE_SOURCES[selectedSource];
-    if (password === config.password) {
-      onSelectSource(selectedSource);
+    const sourceKeys = Object.keys(RESOURCE_SOURCES) as ResourceSource[];
+    const matchedSource = sourceKeys.find(key => RESOURCE_SOURCES[key].password === password);
+    
+    if (matchedSource) {
+      onSelectSource(matchedSource);
       setError(false);
       setPassword('');
     } else {
@@ -51,14 +52,6 @@ export const ResourceSection: FC<ResourceSectionProps> = ({
             {t('resources.lockedMessage')}
           </p>
           <form onSubmit={handlePasswordSubmit} className="space-y-2">
-            <select
-              value={selectedSource}
-              onChange={(e) => setSelectedSource(e.target.value as ResourceSource)}
-              className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded text-sm text-white"
-            >
-              <option value="husse">{t('resources.source1') || 'Źródło 1'}</option>
-              <option value="cirwins">{t('resources.source2') || 'Źródło 2'}</option>
-            </select>
             <input
               type="password"
               value={password}
