@@ -2,7 +2,6 @@ import { useTranslation } from 'react-i18next';
 import type { FC } from 'react';
 import { CubeIcon } from '@heroicons/react/24/outline';
 import type { PackshotConfig } from '../../types/template';
-import { FileUploader } from '../common/FileUploader';
 import { Slider } from '../common/Slider';
 import { Toggle } from '../common/Toggle';
 
@@ -55,14 +54,29 @@ export const PackshotSettings: FC<PackshotSettingsProps> = ({
       {config?.enabled && (
         <div className="space-y-3 pl-4 border-l-2 border-gray-700">
           <div className="flex gap-2">
-            <FileUploader
-              label={t('packshot.upload')}
-              onFileSelect={onPackshotUpload}
-            />
+            <label className="flex-1 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded transition-colors text-sm text-center cursor-pointer">
+              {t('packshot.upload')}
+              <input
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                      const result = event.target?.result as string;
+                      onPackshotUpload(result);
+                    };
+                    reader.readAsDataURL(file);
+                  }
+                }}
+              />
+            </label>
             {isHusseMode && onOpenHusseModal && (
               <button
                 onClick={onOpenHusseModal}
-                className="w-full px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded text-white text-sm transition-colors"
+                className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded text-white text-sm transition-colors"
               >
                 Wybierz
               </button>
