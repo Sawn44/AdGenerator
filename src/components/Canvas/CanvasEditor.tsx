@@ -107,7 +107,7 @@ export const CanvasEditor: React.FC<CanvasEditorProps> = ({
   }, [packshotData, config.packshot?.packshotUrl, config.packshot?.packshotData]);
 
   const calculateFitScale = useCallback(() => {
-    if (!containerRef.current) return 1;
+    if (!containerRef.current) return 0.5;
     const container = containerRef.current;
     const maxWidth = container.clientWidth - 40;
     const maxHeight = container.clientHeight - 40;
@@ -117,8 +117,6 @@ export const CanvasEditor: React.FC<CanvasEditorProps> = ({
   }, [width, height]);
 
   useEffect(() => {
-    const fitScale = calculateFitScale();
-    setDisplayScale(fitScale);
     const handleResize = () => {
       setDisplayScale(calculateFitScale());
     };
