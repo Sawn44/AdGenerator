@@ -62,7 +62,7 @@ export const PackshotSettings: FC<PackshotSettingsProps> = ({
             {isHusseMode && onOpenHusseModal && (
               <button
                 onClick={onOpenHusseModal}
-                className="flex-1 px-3 py-2 bg-blue-600 hover:bg-blue-500 rounded text-white text-sm transition-colors"
+                className="w-full px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded text-white text-sm transition-colors"
               >
                 Wybierz
               </button>
