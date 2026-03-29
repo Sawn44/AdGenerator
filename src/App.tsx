@@ -6,18 +6,16 @@ import { useLocalStorage } from './hooks/useLocalStorage';
 import type { Template, TemplateConfig, Project, FormatType } from './types/template';
 import './i18n';
 
-import blankLandscape from './templates/blank-landscape.json';
-import blankSquare from './templates/blank-square.json';
-import productHero from './templates/product-hero.json';
-import promoRed from './templates/promo-red.json';
-import elegantDark from './templates/elegant-dark.json';
+import husse191 from './templates/husse191_1.json';
+import husse11 from './templates/husse1_1.json';
+import husse45 from './templates/husse4_5.json';
+import husse916 from './templates/husse9_16.json';
 
 const builtInTemplates: Template[] = [
-  blankLandscape as unknown as Template,
-  blankSquare as unknown as Template,
-  productHero as unknown as Template,
-  promoRed as unknown as Template,
-  elegantDark as unknown as Template,
+  husse191 as unknown as Template,
+  husse11 as unknown as Template,
+  husse45 as unknown as Template,
+  husse916 as unknown as Template,
 ];
 
 const DEFAULT_CONFIG: TemplateConfig = {
