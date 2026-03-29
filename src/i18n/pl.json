@@ -35,10 +35,12 @@
     "title": "Logo",
     "upload": "Wgraj logo",
     "remove": "Usuń logo",
+    "position": "Ustawienie",
     "positionX": "Pozycja X",
     "positionY": "Pozycja Y",
     "size": "Rozmiar",
-    "opacity": "Przezroczystość"
+    "opacity": "Przezroczystość",
+    "custom": "Własna"
   },
   "packshot": {
     "title": "Packshot",

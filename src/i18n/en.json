@@ -35,10 +35,12 @@
     "title": "Logo",
     "upload": "Upload logo",
     "remove": "Remove logo",
+    "position": "Preset",
     "positionX": "Position X",
     "positionY": "Position Y",
     "size": "Size",
-    "opacity": "Opacity"
+    "opacity": "Opacity",
+    "custom": "Custom"
   },
   "packshot": {
     "title": "Packshot",

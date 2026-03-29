@@ -112,7 +112,7 @@ export const LogoSettings: FC<LogoSettingsProps> = ({
           </div>
           
           <Slider
-            label={t('logo.position') + ' X'}
+            label={t('logo.positionX')}
             value={config.positionX}
             onChange={(value) => handleChange('positionX', value)}
             min={-50}
@@ -121,7 +121,7 @@ export const LogoSettings: FC<LogoSettingsProps> = ({
           />
           
           <Slider
-            label={t('logo.position') + ' Y'}
+            label={t('logo.positionY')}
             value={config.positionY}
             onChange={(value) => handleChange('positionY', value)}
             min={0}
