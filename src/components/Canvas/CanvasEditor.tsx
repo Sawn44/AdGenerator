@@ -171,7 +171,7 @@ export const CanvasEditor: React.FC<CanvasEditorProps> = ({
       const aspectRatio = logoImg.height / logoImg.width;
       const logoHeight = logoWidth * aspectRatio;
       
-      const x = width / 2 + (positionX / 100) * (width / 2);
+      const x = (positionX / 100) * width;
       const y = (positionY / 100) * height;
       
       ctx.globalAlpha = opacity / 100;
