@@ -13,14 +13,16 @@
       "positionX": 11,
       "positionY": 11,
       "scale": 15,
-      "opacity": 100
+      "opacity": 100,
+	  "logoUrl": "https://adgen.dagere.pl/husse/logo.png"
     },
     "packshot": {
       "enabled": true,
       "positionX": 75,
       "positionY": 50,
       "scale": 55,
-      "opacity": 100
+      "opacity": 100,
+      "packshotUrl": "https://adgen.dagere.pl/husse/TRANSPARENT/Adult_Sterilised_12kg.png"
     },
     "text": {
       "enabled": true,

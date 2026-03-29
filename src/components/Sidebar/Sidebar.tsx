@@ -23,6 +23,8 @@ interface SidebarProps {
   onPackshotUpload: (data: string) => void;
   onSaveProject: (name: string) => void;
   onLoadProject: (project: any) => void;
+  logoData: string | null;
+  packshotData: string | null;
 }
 
 export const Sidebar: FC<SidebarProps> = ({
@@ -34,6 +36,8 @@ export const Sidebar: FC<SidebarProps> = ({
   onPackshotUpload,
   onSaveProject,
   onLoadProject,
+  logoData,
+  packshotData,
 }) => {
   const { t, i18n } = useTranslation();
   const [activeSource, setActiveSource] = useState<ResourceSource | null>(null);
@@ -153,6 +157,8 @@ export const Sidebar: FC<SidebarProps> = ({
             onSave={onSaveProject}
             onLoad={onLoadProject}
             config={config}
+            logoData={logoData}
+            packshotData={packshotData}
           />
         </div>
       </div>

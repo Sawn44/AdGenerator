@@ -7,12 +7,16 @@ interface ProjectManagerProps {
   onLoad: (project: Project) => void;
   onSave: (name: string) => void;
   config: TemplateConfig;
+  logoData: string | null;
+  packshotData: string | null;
 }
 
 export const ProjectManager: React.FC<ProjectManagerProps> = ({
   onLoad,
   onSave,
   config,
+  logoData,
+  packshotData,
 }) => {
   const { t } = useTranslation();
   const { projects, deleteProject } = useLocalStorage();
@@ -35,6 +39,16 @@ export const ProjectManager: React.FC<ProjectManagerProps> = ({
   const handleExportTemplate = () => {
     if (!templateName.trim()) return;
     
+    const logoConfig = config.logo ? {
+      ...config.logo,
+      logoData: logoData || config.logo.logoUrl || undefined,
+    } : null;
+
+    const packshotConfig = config.packshot ? {
+      ...config.packshot,
+      packshotData: packshotData || config.packshot.packshotUrl || undefined,
+    } : null;
+
     const template: Template = {
       id: `custom_${Date.now()}`,
       name: templateName.trim(),
@@ -42,8 +56,8 @@ export const ProjectManager: React.FC<ProjectManagerProps> = ({
       category: 'custom',
       config: {
         ...config,
-        logo: config.logo ? { ...config.logo } : null,
-        packshot: config.packshot ? { ...config.packshot } : null,
+        logo: logoConfig,
+        packshot: packshotConfig,
         text: config.text ? { ...config.text } : null,
         subtext: config.subtext ? { ...config.subtext } : null,
         cta: config.cta ? { ...config.cta } : null,

@@ -13,7 +13,8 @@
       "positionX": 17,
       "positionY": 7,
       "scale": 24,
-      "opacity": 100
+      "opacity": 100,
+	  "logoUrl": "https://adgen.dagere.pl/husse/logo.png"
     },
     "packshot": {
       "enabled": true,

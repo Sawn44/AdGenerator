@@ -48,6 +48,10 @@ export const CanvasEditor: React.FC<CanvasEditorProps> = ({
         const img = new Image();
         img.onload = () => setLogoImg(img);
         img.src = logoData;
+      } else if (config.logo?.logoData) {
+        const img = new Image();
+        img.onload = () => setLogoImg(img);
+        img.src = config.logo.logoData;
       } else if (config.logo?.logoUrl) {
         try {
           const response = await fetch(config.logo.logoUrl);
@@ -68,7 +72,7 @@ export const CanvasEditor: React.FC<CanvasEditorProps> = ({
       }
     };
     loadLogo();
-  }, [logoData, config.logo?.logoUrl]);
+  }, [logoData, config.logo?.logoUrl, config.logo?.logoData]);
 
   useEffect(() => {
     const loadPackshot = async () => {
@@ -76,6 +80,10 @@ export const CanvasEditor: React.FC<CanvasEditorProps> = ({
         const img = new Image();
         img.onload = () => setPackshotImg(img);
         img.src = packshotData;
+      } else if (config.packshot?.packshotData) {
+        const img = new Image();
+        img.onload = () => setPackshotImg(img);
+        img.src = config.packshot.packshotData;
       } else if (config.packshot?.packshotUrl) {
         try {
           const response = await fetch(config.packshot.packshotUrl);
@@ -96,7 +104,7 @@ export const CanvasEditor: React.FC<CanvasEditorProps> = ({
       }
     };
     loadPackshot();
-  }, [packshotData, config.packshot?.packshotUrl]);
+  }, [packshotData, config.packshot?.packshotUrl, config.packshot?.packshotData]);
 
   const calculateFitScale = useCallback(() => {
     if (!containerRef.current) return 1;

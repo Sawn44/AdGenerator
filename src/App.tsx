@@ -100,16 +100,18 @@ function App() {
 
   return (
     <div className="h-screen flex bg-gray-900">
-      <Sidebar
-        templates={templates}
-        config={config}
-        onConfigChange={handleConfigChange}
-        onFormatChange={handleFormatChange}
-        onLogoUpload={handleLogoUpload}
-        onPackshotUpload={handlePackshotUpload}
-        onSaveProject={handleSaveProject}
-        onLoadProject={handleLoadProject}
-      />
+        <Sidebar
+          templates={templates}
+          config={config}
+          onConfigChange={handleConfigChange}
+          onFormatChange={handleFormatChange}
+          onLogoUpload={handleLogoUpload}
+          onPackshotUpload={handlePackshotUpload}
+          onSaveProject={handleSaveProject}
+          onLoadProject={handleLoadProject}
+          logoData={logoData}
+          packshotData={packshotData}
+        />
       
       <div className="flex-1 flex flex-col">
         <CanvasEditor

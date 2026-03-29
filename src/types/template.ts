@@ -9,6 +9,7 @@ export interface LogoConfig {
   scale: number;
   opacity: number;
   logoUrl?: string;
+  logoData?: string;
 }
 
 export interface PackshotConfig {
@@ -18,6 +19,7 @@ export interface PackshotConfig {
   scale: number;
   opacity: number;
   packshotUrl?: string;
+  packshotData?: string;
 }
 
 export interface TextConfig {
