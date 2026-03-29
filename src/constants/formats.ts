@@ -14,7 +14,7 @@ export const PRESET_COLORS = [
   { name: 'Bordowy', nameEn: 'Burgundy', color: '#594356' },
   { name: 'Różowy', nameEn: 'Pink', color: '#9f3661' },
   { name: 'Łososiowy', nameEn: 'Salmon', color: '#b88485' },
-  { name: 'Grafit', nameEn: 'Graphite', color: '#435036' },
+  { name: 'Grafit', nameEn: 'Graphite', color: '#43503c' },
   { name: 'Sage', nameEn: 'Sage', color: '#7c9b8a' },
 ];
 
