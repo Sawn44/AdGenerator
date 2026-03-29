@@ -32,13 +32,6 @@ export const ResourceSection: FC<ResourceSectionProps> = ({
     }
   };
 
-  const handleSourceChange = (source: ResourceSource) => {
-    setSelectedSource(source);
-    if (activeSource === source) {
-      onDisable();
-    }
-  };
-
   const activeSourceConfig = activeSource ? RESOURCE_SOURCES[activeSource] : null;
 
   return (
@@ -52,34 +45,20 @@ export const ResourceSection: FC<ResourceSectionProps> = ({
         )}
       </div>
 
-      <div className="space-y-2">
-        <label className="text-xs text-gray-400">{t('resources.sources.husse')}</label>
-        <div className="flex gap-2">
-          {(['husse', 'cirwins'] as ResourceSource[]).map((source) => {
-            const config = RESOURCE_SOURCES[source];
-            return (
-              <button
-                key={source}
-                onClick={() => handleSourceChange(source)}
-                className={`flex-1 px-3 py-2 text-sm rounded transition-colors ${
-                  selectedSource === source
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-                }`}
-              >
-                {config.name}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
       {!activeSource ? (
         <>
           <p className="text-xs text-gray-400 text-center bg-gray-700/50 rounded p-3">
             {t('resources.lockedMessage')}
           </p>
           <form onSubmit={handlePasswordSubmit} className="space-y-2">
+            <select
+              value={selectedSource}
+              onChange={(e) => setSelectedSource(e.target.value as ResourceSource)}
+              className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded text-sm text-white"
+            >
+              <option value="husse">{t('resources.source1') || 'Źródło 1'}</option>
+              <option value="cirwins">{t('resources.source2') || 'Źródło 2'}</option>
+            </select>
             <input
               type="password"
               value={password}

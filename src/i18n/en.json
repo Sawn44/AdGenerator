@@ -107,7 +107,9 @@
     "sources": {
       "husse": "Husse",
       "cirwins": "Cirwins"
-    }
+    },
+    "source1": "Source 1",
+    "source2": "Source 2"
   },
   "export": {
     "success": "Export successful",
