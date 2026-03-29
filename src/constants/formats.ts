@@ -10,9 +10,12 @@ export const FORMATS: Record<FormatType, { width: number; height: number; label:
 export const PRESET_COLORS = [
   { name: 'Biały', nameEn: 'White', color: '#FFFFFF' },
   { name: 'Czarny', nameEn: 'Black', color: '#000000' },
-  { name: 'Szary jasny', nameEn: 'Light Gray', color: '#F5F5F5' },
-  { name: 'Granat', nameEn: 'Navy', color: '#1A1A2E' },
-  { name: 'Czerwony', nameEn: 'Red', color: '#E94560' },
+  { name: 'Beż', nameEn: 'Beige', color: '#f6f2e9' },
+  { name: 'Bordowy', nameEn: 'Burgundy', color: '#594356' },
+  { name: 'Różowy', nameEn: 'Pink', color: '#9f3661' },
+  { name: 'Łososiowy', nameEn: 'Salmon', color: '#b88485' },
+  { name: 'Grafit', nameEn: 'Graphite', color: '#435036' },
+  { name: 'Sage', nameEn: 'Sage', color: '#7c9b8a' },
 ];
 
 export const GOOGLE_FONTS = [
