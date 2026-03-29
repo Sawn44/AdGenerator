@@ -1,0 +1,47 @@
+{
+  "id": "custom_1774791495828",
+  "name": "Husse9_16",
+  "nameEn": "Husse9_16",
+  "category": "custom",
+  "config": {
+    "format": "story",
+    "background": {
+      "color": "#FFFFFF"
+    },
+    "logo": {
+      "enabled": true,
+      "positionX": 19,
+      "positionY": 0,
+      "scale": 30,
+      "opacity": 100
+    },
+    "packshot": {
+      "enabled": true,
+      "positionX": 0,
+      "positionY": 45,
+      "scale": 100,
+      "opacity": 100
+    },
+    "text": {
+      "enabled": true,
+      "content": "Hypoallergenic Skin & Coat Adult",
+      "fontFamily": "Roboto Slab",
+      "fontSize": 73,
+      "color": "#000000",
+      "positionX": 50,
+      "positionY": 85,
+      "maxWidth": 63
+    },
+    "subtext": {
+      "enabled": true,
+      "content": "Zaawansowana hipoalergiczna ochrona skóry i sierści",
+      "fontFamily": "Roboto Slab",
+      "fontSize": 40,
+      "color": "#000000",
+      "positionX": 50,
+      "positionY": 93,
+      "maxWidth": 61
+    },
+    "cta": null
+  }
+}

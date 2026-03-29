@@ -42,24 +42,60 @@ export const CanvasEditor: React.FC<CanvasEditorProps> = ({
   }, [config.text?.fontFamily, config.subtext?.fontFamily]);
 
   useEffect(() => {
-    if (logoData) {
-      const img = new Image();
-      img.onload = () => setLogoImg(img);
-      img.src = logoData;
-    } else {
-      setLogoImg(null);
-    }
-  }, [logoData]);
+    const loadLogo = async () => {
+      if (logoData) {
+        const img = new Image();
+        img.onload = () => setLogoImg(img);
+        img.src = logoData;
+      } else if (config.logo?.logoUrl) {
+        try {
+          const response = await fetch(config.logo.logoUrl);
+          const blob = await response.blob();
+          const url = URL.createObjectURL(blob);
+          const img = new Image();
+          img.onload = () => {
+            setLogoImg(img);
+            URL.revokeObjectURL(url);
+          };
+          img.src = url;
+        } catch (err) {
+          console.error('Failed to load logo from URL:', err);
+          setLogoImg(null);
+        }
+      } else {
+        setLogoImg(null);
+      }
+    };
+    loadLogo();
+  }, [logoData, config.logo?.logoUrl]);
 
   useEffect(() => {
-    if (packshotData) {
-      const img = new Image();
-      img.onload = () => setPackshotImg(img);
-      img.src = packshotData;
-    } else {
-      setPackshotImg(null);
-    }
-  }, [packshotData]);
+    const loadPackshot = async () => {
+      if (packshotData) {
+        const img = new Image();
+        img.onload = () => setPackshotImg(img);
+        img.src = packshotData;
+      } else if (config.packshot?.packshotUrl) {
+        try {
+          const response = await fetch(config.packshot.packshotUrl);
+          const blob = await response.blob();
+          const url = URL.createObjectURL(blob);
+          const img = new Image();
+          img.onload = () => {
+            setPackshotImg(img);
+            URL.revokeObjectURL(url);
+          };
+          img.src = url;
+        } catch (err) {
+          console.error('Failed to load packshot from URL:', err);
+          setPackshotImg(null);
+        }
+      } else {
+        setPackshotImg(null);
+      }
+    };
+    loadPackshot();
+  }, [packshotData, config.packshot?.packshotUrl]);
 
   const calculateScale = useCallback(() => {
     if (!containerRef.current) return;
@@ -96,7 +132,7 @@ export const CanvasEditor: React.FC<CanvasEditorProps> = ({
       const aspectRatio = packshotImg.height / packshotImg.width;
       const imgHeight = maxWidth * aspectRatio;
       
-      const x = width / 2 + (positionX / 100) * (width / 2);
+      const x = (positionX / 100) * width;
       const y = (positionY / 100) * height - imgHeight / 2;
       
       ctx.globalAlpha = opacity / 100;

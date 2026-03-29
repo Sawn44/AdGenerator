@@ -6,7 +6,11 @@ export interface HusseResource {
   type: 'logo' | 'packshot';
 }
 
-const HUSSE_BASE_URL = 'https://adgen.dagere.pl/husse/';
+const HUSSE_DIRECTORIES = [
+  { url: 'https://adgen.dagere.pl/husse/', defaultType: 'packshot' as const },
+  { url: 'https://adgen.dagere.pl/husse/TRANSPARENT/', defaultType: 'packshot' as const },
+];
+
 const IMAGE_EXTENSIONS = ['.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg'];
 
 function isImageFile(filename: string): boolean {
@@ -16,10 +20,10 @@ function isImageFile(filename: string): boolean {
 
 function getResourceType(filename: string): 'logo' | 'packshot' {
   const lower = filename.toLowerCase();
-  if (lower.includes('logo') || lower.includes('brand')) {
-    return 'logo';
+  if (lower.includes('logo') || lower.includes('brand') || lower.includes('transparent')) {
+    return 'packshot';
   }
-  return 'packshot';
+  return 'logo';
 }
 
 export function useHusseResources() {
@@ -32,29 +36,32 @@ export function useHusseResources() {
     setError(null);
     
     try {
-      const response = await fetch(HUSSE_BASE_URL);
-      const text = await response.text();
+      const allFiles: HusseResource[] = [];
       
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(text, 'text/html');
-      const links = doc.querySelectorAll('a');
-      
-      const files: HusseResource[] = [];
-      links.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href && !href.startsWith('?') && href !== '/') {
-          const filename = decodeURIComponent(href.replace(/\/$/, ''));
-          if (isImageFile(filename)) {
-            files.push({
-              name: filename,
-              url: HUSSE_BASE_URL + encodeURIComponent(filename),
-              type: getResourceType(filename),
-            });
+      for (const dir of HUSSE_DIRECTORIES) {
+        const response = await fetch(dir.url);
+        const text = await response.text();
+        
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(text, 'text/html');
+        const links = doc.querySelectorAll('a');
+        
+        links.forEach(link => {
+          const href = link.getAttribute('href');
+          if (href && !href.startsWith('?') && href !== '/') {
+            const filename = decodeURIComponent(href.replace(/\/$/, ''));
+            if (isImageFile(filename)) {
+              allFiles.push({
+                name: filename,
+                url: dir.url + encodeURIComponent(filename),
+                type: getResourceType(filename),
+              });
+            }
           }
-        }
-      });
+        });
+      }
       
-      setResources(files);
+      setResources(allFiles);
     } catch (err) {
       setError('Nie udało się pobrać zasobów');
       console.error(err);

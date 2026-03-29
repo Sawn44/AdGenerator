@@ -1,0 +1,47 @@
+{
+  "id": "custom_1774791249821",
+  "name": "9:16",
+  "nameEn": "9:16",
+  "category": "custom",
+  "config": {
+    "format": "landscape",
+    "background": {
+      "color": "#FFFFFF"
+    },
+    "logo": {
+      "enabled": true,
+      "positionX": 11,
+      "positionY": 3,
+      "scale": 15,
+      "opacity": 100
+    },
+    "packshot": {
+      "enabled": true,
+      "positionX": 50,
+      "positionY": 50,
+      "scale": 55,
+      "opacity": 100
+    },
+    "text": {
+      "enabled": true,
+      "content": "Hypoallergenic Skin & Coat Adult",
+      "fontFamily": "Roboto Slab",
+      "fontSize": 44,
+      "color": "#000000",
+      "positionX": 30,
+      "positionY": 45,
+      "maxWidth": 33
+    },
+    "subtext": {
+      "enabled": true,
+      "content": "Zaawansowana hipoalergiczna ochrona skóry i sierści",
+      "fontFamily": "Roboto Slab",
+      "fontSize": 30,
+      "color": "#000000",
+      "positionX": 30,
+      "positionY": 63,
+      "maxWidth": 39
+    },
+    "cta": null
+  }
+}
