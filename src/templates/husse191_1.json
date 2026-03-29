@@ -1,7 +1,7 @@
 {
-  "id": "custom_1774791249821",
-  "name": "9:16",
-  "nameEn": "9:16",
+  "id": "custom_1774795570229",
+  "name": "husse191_1",
+  "nameEn": "husse191_1",
   "category": "custom",
   "config": {
     "format": "landscape",
@@ -11,35 +11,35 @@
     "logo": {
       "enabled": true,
       "positionX": 11,
-      "positionY": 3,
+      "positionY": 11,
       "scale": 15,
       "opacity": 100
     },
     "packshot": {
       "enabled": true,
-      "positionX": 50,
+      "positionX": 75,
       "positionY": 50,
       "scale": 55,
       "opacity": 100
     },
     "text": {
       "enabled": true,
-      "content": "Hypoallergenic Skin & Coat Adult",
+      "content": "Adult Sterilised",
       "fontFamily": "Roboto Slab",
-      "fontSize": 44,
+      "fontSize": 60,
       "color": "#000000",
       "positionX": 30,
-      "positionY": 45,
-      "maxWidth": 33
+      "positionY": 52,
+      "maxWidth": 90
     },
     "subtext": {
       "enabled": true,
-      "content": "Zaawansowana hipoalergiczna ochrona skóry i sierści",
+      "content": "Kontrola wagi i dobre samopoczucie psów sterylizowanych",
       "fontFamily": "Roboto Slab",
       "fontSize": 30,
       "color": "#000000",
       "positionX": 30,
-      "positionY": 63,
+      "positionY": 70,
       "maxWidth": 39
     },
     "cta": null

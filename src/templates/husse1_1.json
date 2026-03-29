@@ -1,5 +1,5 @@
 {
-  "id": "custom_1774791717446",
+  "id": "custom_1774795413204",
   "name": "husse1_1",
   "nameEn": "husse1_1",
   "category": "custom",
@@ -10,37 +10,38 @@
     },
     "logo": {
       "enabled": true,
-      "positionX": 12,
-      "positionY": 0,
-      "scale": 20,
+      "positionX": 17,
+      "positionY": 7,
+      "scale": 24,
       "opacity": 100
     },
     "packshot": {
       "enabled": true,
-      "positionX": 0,
-      "positionY": 45,
-      "scale": 75,
-      "opacity": 100
+      "positionX": 50,
+      "positionY": 47,
+      "scale": 80,
+      "opacity": 100,
+      "packshotUrl": "https://adgen.dagere.pl/husse/TRANSPARENT/Adult_Sterilised_12kg.png"
     },
     "text": {
       "enabled": true,
-      "content": "Hypoallergenic Skin & Coat Adult",
+      "content": "Adult Sterilised",
       "fontFamily": "Roboto Slab",
-      "fontSize": 60,
+      "fontSize": 75,
       "color": "#000000",
       "positionX": 50,
-      "positionY": 86,
-      "maxWidth": 100
+      "positionY": 90,
+      "maxWidth": 63
     },
     "subtext": {
       "enabled": true,
-      "content": "Zaawansowana hipoalergiczna ochrona skóry i sierści",
+      "content": "Kontrola wagi i dobre samopoczucie psów sterylizowanych",
       "fontFamily": "Roboto Slab",
-      "fontSize": 40,
+      "fontSize": 35,
       "color": "#000000",
       "positionX": 50,
       "positionY": 95,
-      "maxWidth": 63
+      "maxWidth": 90
     },
     "cta": null
   }
